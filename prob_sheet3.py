@@ -22,10 +22,38 @@ def M_multiply(a,b):
     return c;
     
 
+def Gaussian(A,b):
+    for i in range(A.shape[1]):
+        print("hiu")    
+        print(A)
+        
+        
+        A[1][i] = A[1][i]*A[0][0]/A[1][i] - A[0][i]
+        b[1] = b[1]*A[0][0]/A[1][i] - b[0]
+        
+        A[2][i] = A[2][i]*A[0][0]/A[2][i] - A[0][i]
+        b[2] = b[2]*A[0][0]/A[2][i] - b[0]
+        
+        print("here")
+        A[0][i] = A[0][i]/A[0][0]
+        b[0] = b[0]/A[0][0]
+
+        #print(b[])
+    
+    return A,b
+
+
 
 my_matrix = M_multiply(a,b)
 print(my_matrix)
 print(np.dot(a,b))
+
+
+
+
+my_A = np.array([[5,6,77],[7,8,12],[1,2,65]])
+my_b = np.array([[2],[5],[24]])
+print(Gaussian(my_A,my_b))
 
 
 
